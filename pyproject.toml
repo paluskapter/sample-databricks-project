@@ -7,7 +7,7 @@ authors = [
 ]
 dependencies = [
     "pyspark==3.5.0",
-    "pandas==1.5.3",
+    "pandas==2.2.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.10"
