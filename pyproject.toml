@@ -6,7 +6,7 @@ authors = [
     { name = "Peter Paluska", email = "paluskapter@gmail.com" }
 ]
 dependencies = [
-    "pyspark==3.5.0",
+    "pyspark==3.5.1",
     "pandas==1.5.3",
 ]
 readme = "README.md"
