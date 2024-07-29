@@ -1,24 +1,68 @@
 [project]
 name = "sample-databricks-project"
 version = "0.1.0"
-description = "Add your description here"
+description = "Sample project for Databricks with Rye"
 authors = [
-    { name = "Peter Paluska", email = "peter.paluska@lhsystems.com" }
+    { name = "Peter Paluska", email = "paluskapter@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "pyspark==3.5.0",
+    "pandas==1.5.3",
+]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.10"
+
+[project.urls]
+Repository = "https://github.com/paluskapter/sample-databricks-project"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-[tool.rye]
-managed = true
-dev-dependencies = []
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sample_databricks_project"]
+
+[tool.pytest.ini_options]
+addopts = "tests --cov=src/sample_databricks_project"
+
+[tool.ruff]
+# PyCharm: Settings | Editor | Inspections | Python | Unresolved references | Ignored references
+builtins = ["dbutils", "display", "spark"]
+line-length = 120
+
+[tool.ruff.lint]
+# Rules, explanations and solutions: https://docs.astral.sh/ruff/rules/
+select = ["ALL"]
+ignore = [
+    "ANN002", "ANN003", "ANN101", "ANN102", "ANN401", # not required special type annotations disabled
+    "BLE", # blind except allowed
+    "D100", "D104", "D203", "D212", # unnecessary or conflicting docstyle checks disabled
+    "EM", # error message formatting allowed
+    "EXE", # shebang not required
+    "FIX", # comments for future work allowed
+    "FBT", # bool args allowed
+    "G004", # logging f-string allowed
+    "PTH123", # built-in open allowed
+    "TD002", "TD003", # future work formatting
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"src/databricks_notebooks/**/*.py" = [
+    "E501", # long lines allowed
+    "ERA", # commented out code allowed
+    "T20", # print allowed
+]
+"tests/**/test_*.py" = [
+    "D101", "D102", "D103", # docstrings not required
+    "S101", # asserts allowed
+]
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pytest>=8.3.2",
+    "pytest-cov>=5.0.0",
+]

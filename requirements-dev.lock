@@ -8,3 +8,33 @@
 #   with-sources: false
 
 -e file:.
+coverage==7.6.0
+    # via pytest-cov
+exceptiongroup==1.2.2
+    # via pytest
+iniconfig==2.0.0
+    # via pytest
+numpy==2.0.1
+    # via pandas
+packaging==24.1
+    # via pytest
+pandas==1.5.3
+    # via sample-databricks-project
+pluggy==1.5.0
+    # via pytest
+py4j==0.10.9.7
+    # via pyspark
+pyspark==3.5.0
+    # via sample-databricks-project
+pytest==8.3.2
+    # via pytest-cov
+pytest-cov==5.0.0
+python-dateutil==2.9.0.post0
+    # via pandas
+pytz==2024.1
+    # via pandas
+six==1.16.0
+    # via python-dateutil
+tomli==2.0.1
+    # via coverage
+    # via pytest
