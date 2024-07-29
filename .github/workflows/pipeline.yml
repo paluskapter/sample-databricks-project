@@ -1,0 +1,30 @@
+name: Pull Request check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rye
+        run: |
+          curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" bash
+          echo "$HOME/.rye/shims" >> $GITHUB_PATH
+
+      - name: Dependencies
+        run: rye sync
+
+      - name: Lint
+        run: rye lint
+
+      - name: Test
+        run: rye test
+
+      - name: Build
+        run: rye build
