@@ -1,6 +1,6 @@
 [project]
 name = "sample-databricks-project"
-version = "0.1.0"
+version = "1.0.0"
 description = "Sample project for Databricks with Rye"
 authors = [
     { name = "Peter Paluska", email = "paluskapter@gmail.com" }

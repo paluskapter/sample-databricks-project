@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  code-quality:
+  pull-request-check:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout

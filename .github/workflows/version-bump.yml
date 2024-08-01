@@ -1,0 +1,27 @@
+name: Version bump
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Version bump
+        run: |
+          NEW_VERSION=$(sed -n '/^version = /p' pyproject.toml | cut -d'"' -f 2 | awk -F. '{$2++;print}' OFS=.)
+          sed -i "s/^version = \"[^\"]*\"/version = \"${NEW_VERSION}\"/g" pyproject.toml
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub bot
+          author_email: bot@github.com
+          message: 'Version bump to ${{ env.NEW_VERSION }}'
+          tag: ${{ env.NEW_VERSION }}
