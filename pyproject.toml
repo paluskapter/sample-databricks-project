@@ -43,16 +43,20 @@ ignore = [
     "EM", # error message formatting allowed
     "EXE", # shebang not required
     "FIX", # comments for future work allowed
+    "I001", # Import sorting disabled until configuration is available: https://github.com/astral-sh/ruff/issues/2600
     "FBT", # bool args allowed
     "G004", # logging f-string allowed
+    "PLR2004", # allow magic values
     "PTH123", # built-in open allowed
     "TD002", "TD003", # future work formatting
+    "TRY003", # exception messages allowed
 ]
 
 [tool.ruff.lint.extend-per-file-ignores]
 "src/databricks_notebooks/**/*.py" = [
     "E501", # long lines allowed
     "ERA", # commented out code allowed
+    "S101", # asserts allowed
     "T20", # print allowed
 ]
 "tests/**/test_*.py" = [
