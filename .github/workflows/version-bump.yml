@@ -16,6 +16,7 @@ jobs:
         run: |
           NEW_VERSION=$(sed -n '/^version = /p' pyproject.toml | cut -d'"' -f 2 | awk -F. '{$2++;print}' OFS=.)
           sed -i "s/^version = \"[^\"]*\"/version = \"${NEW_VERSION}\"/g" pyproject.toml
+          sed -i '/^name = "aviation-trend-analyzer"$/ {n; s/^version = "[^"]*"/version = "'"${NEW_VERSION}"'"/;}' uv.lock
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Commit

@@ -23,14 +23,14 @@ requires-python = ">=3.12"
 Repository = "https://github.com/paluskapter/sample-databricks-project"
 
 [build-system]
-requires = ["uv_build>=0.8.12,<0.9.0"]
+requires = ["uv_build>=0.11.7,<0.12.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "pytest>=8.4.1",
-    "pytest-cov>=6.2.1",
-    "ruff>=0.12.9",
+    "pytest>=9.0.3,<10.0.0",
+    "pytest-cov>=7.1.0,<8.0.0",
+    "ruff>=0.15.10,<1.0.0",
 ]
 
 [tool.pytest.ini_options]
